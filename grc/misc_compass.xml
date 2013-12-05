@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<block>
+  <name>Qt Compass</name>
+  <key>misc_compass</key>
+  <category>QT</category>
+  <import>import misc</import>
+  <make>#set $win = 'self._%s_win'%$id
+misc.compass($use_radians, $needle_style, $needle_type, $number_rate)
+self._$(id)_win = self.$(id).get_pyqwidget()
+$(gui_hint()($win))
+</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+
+  <param>
+	<name>Unit</name>
+	<key>use_radians</key>
+	<value>False</value>
+	<type>enum</type>
+	<option>
+		<name>Radians</name>
+		<key>True</key>
+	</option>
+	<option>
+		<name>Degrees</name>
+		<key>False</key>
+	</option>
+  </param>
+
+  <param>
+	<name>Needle type</name>
+	<key>needle_type</key>
+	<value>"simple"</value>
+	<type>enum</type>
+	<option>
+		<name>Simple</name>
+		<key>"simple"</key>
+	</option>
+	<option>
+		<name>Magnetic</name>
+		<key>"magnet"</key>
+	</option>
+  </param>
+
+  <param>
+	<name>Needle style</name>
+	<key>needle_style</key>
+	<value>"nice"</value>
+	<type>enum</type>
+	<option>
+		<name>Nice</name>
+		<key>"nice"</key>
+	</option>
+	<option>
+		<name>Simple</name>
+		<key>"simple"</key>
+	</option>
+  </param>
+
+  <param>
+	<name>Number Rate</name>
+	<key>number_rate</key>
+	<value>15</value>
+	<type>int</type>
+  </param>
+
+  <param>
+    <name>GUI Hint</name>
+	<key>gui_hint</key>
+	<value></value>
+	<type>gui_hint</type>
+	<hide>part</hide>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+</block>
