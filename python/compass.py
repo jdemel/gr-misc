@@ -34,7 +34,6 @@ class compass(gr.sync_block, Qt.QWidget):
             in_sig=[numpy.float32],
             out_sig=None)
 
-        print use_radians, needle_style, needle_type
         self.use_radians = use_radians
         if needle_style == "nice":
             self.needle_style = 0

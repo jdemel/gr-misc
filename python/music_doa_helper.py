@@ -44,7 +44,7 @@ def calculate_antenna_array_response(antenna_array, angular_resolution, l_lambda
             response_step += [antenna_response]
 
         response += [response_step]
-    print response
+    #print response
     return response
 
 
@@ -85,7 +85,7 @@ class music_doa_helper(gr.hier_block2):
         #print "--> Calculating array response..."
         self.array_response = calculate_antenna_array_response(self.antenna_array, self.angular_resolution, self.l_lambda)
         #print "--> Done."
-        print self.array_response
+        #print self.array_response
         self.impl = misc.music_doa(self.m, self.n, self.nsamples, self.array_response, self.angular_resolution)
 
         self.connect(self, self.impl)

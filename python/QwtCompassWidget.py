@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'QwtCompassWidget.ui'
 #
-# Created: Wed Dec  4 15:28:12 2013
+# Created: Wed Dec  4 17:07:32 2013
 #      by: PyQt4 UI code generator 4.10
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,8 @@ class Ui_QwtCompassWidget(object):
     def setupUi(self, QwtCompassWidget):
         QwtCompassWidget.setObjectName(_fromUtf8("QwtCompassWidget"))
         QwtCompassWidget.setEnabled(True)
-        QwtCompassWidget.resize(524, 452)
+        QwtCompassWidget.resize(450, 450)
+        QwtCompassWidget.setMinimumSize(QtCore.QSize(200, 200))
         self.gridLayout_2 = QtGui.QGridLayout(QwtCompassWidget)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.gridLayout = QtGui.QGridLayout()

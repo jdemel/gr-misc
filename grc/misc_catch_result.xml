@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##Variable block: a grc variable with key, value
+###################################################
+ -->
+<block>
+	<name>Catch Function Result</name>
+	<key>catch_result</key>
+	<make>self.$block_id().$func()($value)
+self.set_$(result)(self.$(id))</make>
+	<callback>self.set_$(result)(self.$block_id().$func()($value))</callback>
+
+	<param>
+		<name>Value</name>
+		<key>value</key>
+		<value>0</value>
+		<type>raw</type>
+	</param>
+
+    <param>
+		<name>Function</name>
+		<key>func</key>
+		<type>string</type>
+    </param>
+
+    <param>
+		<name>Block ID</name>
+		<key>block_id</key>
+		<type>string</type>
+    </param>
+
+	<param>
+		<name>Result</name>
+		<key>result</key>
+		<type>raw</type>
+	</param>
+	<doc>
+Call any blocks member function and write it to an existing variable given in the result field.
+	</doc>
+</block>
