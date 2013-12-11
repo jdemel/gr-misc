@@ -21,5 +21,6 @@ install(FILES
     misc_music_doa.xml
     misc_compass.xml
 	misc_catch_result.xml
+	misc_missile_launcher.xml
     misc_numbersink.xml DESTINATION share/gnuradio/grc/blocks
 )

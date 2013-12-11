@@ -35,6 +35,7 @@ GR_PYTHON_INSTALL(
 	QwtCompassWidget.py
 	QtNumberSinkWidget.py
     compass.py
+	missile_launcher.py
     numbersink.py DESTINATION ${GR_PYTHON_DIR}/misc
 )
 

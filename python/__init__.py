@@ -48,6 +48,7 @@ from misc_swig import *
 from compass import compass
 from music_doa_helper import *
 from numbersink import numbersink
+from missile_launcher import *
 #
 
 # ----------------------------------------------------------------

@@ -1,41 +1,58 @@
 <?xml version="1.0"?>
 <!--
 ###################################################
-##Variable block: a grc variable with key, value
+## Variable with callback for other function
 ###################################################
  -->
 <block>
 	<name>Catch Function Result</name>
-	<key>catch_result</key>
-	<make>self.$block_id().$func()($value)
-self.set_$(result)(self.$(id))</make>
-	<callback>self.set_$(result)(self.$block_id().$func()($value))</callback>
-
-	<param>
-		<name>Value</name>
-		<key>value</key>
-		<value>0</value>
-		<type>raw</type>
-	</param>
+	<key>variable_catch_result</key>
+	<import>import time</import>
+	<import>import threading</import>
+	<var_make>self.$(id) = $value</var_make>
+	<make>#slurp
+self.$(id) = val = self.$block_id().$func()($params)
+def _$(id)_probe():
+    notset = True
+    while notset:
+        try:
+            self.set_$(id)(self.$(id))
+            notset = False
+        except:
+            notset = True
+    time.sleep(1.0/10.0)
+self._$(id)_thread = threading.Thread(target=_$(id)_probe)
+self._$(id)_thread.daemon = True
+self._$(id)_thread.start()
+</make>
+	<callback>self.set_$(id)(self.$block_id().$func()($params))</callback>
 
     <param>
-		<name>Function</name>
-		<key>func</key>
-		<type>string</type>
+        <name>Initial Value</name>
+        <key>value</key>
+        <value>0</value>
+        <type>raw</type>
     </param>
 
     <param>
-		<name>Block ID</name>
-		<key>block_id</key>
-		<type>string</type>
+        <name>Block ID</name>
+        <key>block_id</key>
+        <type>string</type>
     </param>
 
-	<param>
-		<name>Result</name>
-		<key>result</key>
-		<type>raw</type>
-	</param>
-	<doc>
-Call any blocks member function and write it to an existing variable given in the result field.
-	</doc>
+    <param>
+        <name>Block Function</name>
+        <key>func</key>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Function Params</name>
+        <key>params</key>
+        <value>0</value>
+        <type>raw</type>
+    </param>
+
+    <doc>Call any blocks member function and write it to an existing variable given in the result field.
+    </doc>
 </block>
