@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: UHD FFT Qt
 # Author: Johannes Demel
-# Generated: Tue Dec 10 16:36:51 2013
+# Generated: Tue Dec 10 17:03:26 2013
 ##################################################
 
 from PyQt4 import Qt
@@ -49,8 +49,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.info_init = info_init = {"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname"}
-        self.z_info = z_info = info_init
+        self.z_info = z_info = {"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname"}
         self.usrp_type = usrp_type = "b200"
         self.usrp_serial = usrp_serial = z_info["mboard_serial"]
         self.usrp_id = usrp_id = z_info["mboard_id"]
@@ -227,21 +226,15 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
-    def get_info_init(self):
-        return self.info_init
-
-    def set_info_init(self, info_init):
-        self.info_init = info_init
-
     def get_z_info(self):
         return self.z_info
 
     def set_z_info(self, z_info):
         self.z_info = z_info
-        self.set_db_name(self.z_info["rx_subdev_name"])
         self.set_db_serial(self.z_info["rx_serial"])
-        self.set_usrp_id(self.z_info["mboard_id"])
+        self.set_db_name(self.z_info["rx_subdev_name"])
         self.set_usrp_serial(self.z_info["mboard_serial"])
+        self.set_usrp_id(self.z_info["mboard_id"])
 
     def get_usrp_type(self):
         return self.usrp_type
@@ -304,8 +297,8 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_catch_result(self, catch_result):
         self.catch_result = catch_result
-        self.set_actual_dsp(self.catch_result.actual_dsp_freq)
         self.set_actual_rf(self.catch_result.actual_rf_freq)
+        self.set_actual_dsp(self.catch_result.actual_dsp_freq)
 
     def get_usrp_text(self):
         return self.usrp_text

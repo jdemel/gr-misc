@@ -9,7 +9,7 @@
 	<key>variable_catch_result</key>
 	<import>import time</import>
 	<import>import threading</import>
-	<var_make>self.$(id) = $value</var_make>
+	<var_make>self.$(id) = $(id) = $value</var_make>
 	<make>#slurp
 self.$(id) = val = self.$block_id().$func()($params)
 def _$(id)_probe():

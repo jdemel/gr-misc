@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Dec 10 15:41:29 2013</timestamp>
+  <timestamp>Tue Dec 10 17:03:26 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,6 +64,75 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>db_serial</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["rx_serial"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(895, 517)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_text</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>db_name + " (" + db_serial  + " ," + db_spec + " ," + db_antenna + ")"</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(898, 458)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_name</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["rx_subdev_name"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(971, 517)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>usrp_serial</value>
     </param>
     <param>
@@ -76,7 +145,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(674, 570)</value>
+      <value>(675, 513)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -96,29 +165,6 @@
     <param>
       <key>value</key>
       <value>z_info["mboard_id"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(605, 570)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>info_init</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>{"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname"}</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -225,29 +271,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>db_text</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>db_name + " (" + db_serial  + " ," + db_spec + " ," + db_antenna + ")"</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(865, 455)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>usrp_text</value>
     </param>
     <param>
@@ -330,52 +353,6 @@
     <param>
       <key>_coordinate</key>
       <value>(38, 402)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>db_serial</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>z_info["rx_serial"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(862, 514)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>db_name</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>z_info["rx_subdev_name"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(938, 514)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1448,111 +1425,6 @@
     </param>
   </block>
   <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>db_antenna</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"antenna"</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>get_antenna</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1003, 587)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>db_spec</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"spec"</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>get_subdev_spec</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(834, 587)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>z_info</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>info_init</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>get_usrp_info</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(599, 628)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>variable_qtgui_label</key>
     <param>
       <key>id</key>
@@ -1616,6 +1488,111 @@
     <param>
       <key>_coordinate</key>
       <value>(697, 148)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_catch_result</key>
+    <param>
+      <key>id</key>
+      <value>z_info</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>{"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname"}</value>
+    </param>
+    <param>
+      <key>block_id</key>
+      <value>usrp_dev</value>
+    </param>
+    <param>
+      <key>func</key>
+      <value>get_usrp_info</value>
+    </param>
+    <param>
+      <key>params</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(600, 571)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_catch_result</key>
+    <param>
+      <key>id</key>
+      <value>db_antenna</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>"antenna"</value>
+    </param>
+    <param>
+      <key>block_id</key>
+      <value>usrp_dev</value>
+    </param>
+    <param>
+      <key>func</key>
+      <value>get_antenna</value>
+    </param>
+    <param>
+      <key>params</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(969, 574)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_catch_result</key>
+    <param>
+      <key>id</key>
+      <value>db_spec</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>"spec"</value>
+    </param>
+    <param>
+      <key>block_id</key>
+      <value>usrp_dev</value>
+    </param>
+    <param>
+      <key>func</key>
+      <value>get_subdev_spec</value>
+    </param>
+    <param>
+      <key>params</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(800, 574)</value>
     </param>
     <param>
       <key>_rotation</key>
