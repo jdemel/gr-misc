@@ -25,9 +25,11 @@ include(GrPlatform) #define LIB_SUFFIX
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
+if(ARMADILLO_FOUND)
 list(APPEND misc_sources
     music_doa_impl.cc
 )
+endif()
 
 add_library(gnuradio-misc SHARED ${misc_sources})
 target_link_libraries(gnuradio-misc ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES} ${ARMADILLO_LIBRARIES})

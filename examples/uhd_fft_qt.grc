@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Dec 10 17:03:26 2013</timestamp>
+  <timestamp>Tue Jan  7 17:34:05 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,167 +64,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>db_serial</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>z_info["rx_serial"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(895, 517)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>db_text</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>db_name + " (" + db_serial  + " ," + db_spec + " ," + db_antenna + ")"</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(898, 458)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>db_name</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>z_info["rx_subdev_name"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(971, 517)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>usrp_serial</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>z_info["mboard_serial"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(675, 513)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>usrp_id</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>z_info["mboard_id"]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(606, 513)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>actual_rf</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>catch_result.actual_rf_freq</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(443, 615)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>actual_dsp</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>catch_result.actual_dsp_freq</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(357, 615)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>master_clock_rate</value>
     </param>
     <param>
@@ -233,11 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>40e6</value>
+      <value>200e6</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(91, 246)</value>
+      <value>(95, 182)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -256,11 +95,57 @@
     </param>
     <param>
       <key>value</key>
-      <value>"b200"</value>
+      <value>"x300"</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(10, 246)</value>
+      <value>(14, 182)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>dev_args</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>"type=" + usrp_type + ",master_clock_rate=" + str(master_clock_rate)</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(24, 123)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>myzero</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(38, 402)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -294,7 +179,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>dev_args</value>
+      <value>actual_dsp</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -302,11 +187,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>"type=" + usrp_type + ",master_clock_rate=" + str(master_clock_rate)</value>
+      <value>catch_result.actual_dsp_freq</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(20, 187)</value>
+      <value>(357, 615)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -317,7 +202,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>dev_args_b200</value>
+      <value>actual_rf</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -325,11 +210,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>dev_args</value>
+      <value>catch_result.actual_rf_freq</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(12, 113)</value>
+      <value>(443, 615)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -340,7 +225,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>myzero</value>
+      <value>usrp_id</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -348,11 +233,359 @@
     </param>
     <param>
       <key>value</key>
-      <value>0</value>
+      <value>z_info["mboard_id"]</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(38, 402)</value>
+      <value>(606, 513)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>usrp_serial</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["mboard_serial"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(675, 513)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_spec</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["rx_subdev_spec"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(985, 504)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_serial</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["rx_serial"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(909, 504)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_antenna</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["rx_antenna"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1061, 504)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_name</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>z_info["rx_subdev_name"]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(810, 505)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>db_text</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>db_name + " (" + db_serial  + " ," + db_spec + " ," + db_antenna + ")"</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(882, 446)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_label</key>
+    <param>
+      <key>id</key>
+      <value>a_db_label</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Daughterboard</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>string</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>db_text</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>3, 2, 1, 1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(697, 148)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_label</key>
+    <param>
+      <key>id</key>
+      <value>a_usrp</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>USRP</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>raw</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>usrp_text</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>3, 1, 1, 1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(552, 148)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_catch_result</key>
+    <param>
+      <key>id</key>
+      <value>catch_result</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>uhd.tune_result()</value>
+    </param>
+    <param>
+      <key>block_id</key>
+      <value>usrp_dev</value>
+    </param>
+    <param>
+      <key>func</key>
+      <value>set_center_freq</value>
+    </param>
+    <param>
+      <key>params</key>
+      <value>center_freq, myzero</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(358, 510)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_entry</key>
+    <param>
+      <key>id</key>
+      <value>center_freq</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Center Frequency</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>900e6</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>4, 3, 1, 2</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(502, 226)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_label</key>
+    <param>
+      <key>id</key>
+      <value>rf_label</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>RF Freq</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>actual_rf</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>3, 3, 1, 1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(865, 148)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_label</key>
+    <param>
+      <key>id</key>
+      <value>dsp_label</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>DSP Freq</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>actual_dsp</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>3, 4, 1, 1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(968, 148)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -363,7 +596,7 @@
     <key>import</key>
     <param>
       <key>id</key>
-      <value>import_0</value>
+      <value>import_1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -375,7 +608,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(310, 148)</value>
+      <value>(397, 468)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -383,10 +616,10 @@
     </param>
   </block>
   <block>
-    <key>variable_qtgui_label</key>
+    <key>variable_qtgui_range</key>
     <param>
       <key>id</key>
-      <value>uhd_version</value>
+      <value>gain</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -394,23 +627,78 @@
     </param>
     <param>
       <key>label</key>
-      <value>UHD</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
+      <value>Gain</value>
     </param>
     <param>
       <key>value</key>
-      <value>uhd.get_version_string()</value>
+      <value>50</value>
+    </param>
+    <param>
+      <key>start</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>stop</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>step</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>counter_slider</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.Horizontal</value>
+    </param>
+    <param>
+      <key>min_len</key>
+      <value>200</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>3, 0, 1, 1</value>
+      <value>5, 0, 1, 5</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 148)</value>
+      <value>(384, 304)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_entry</key>
+    <param>
+      <key>id</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Sample Rate</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>real</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10e6</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value>4, 0, 1, 3</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(384, 226)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -493,10 +781,10 @@
     </param>
   </block>
   <block>
-    <key>variable_qtgui_entry</key>
+    <key>variable_qtgui_label</key>
     <param>
       <key>id</key>
-      <value>samp_rate</value>
+      <value>uhd_version</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -504,23 +792,23 @@
     </param>
     <param>
       <key>label</key>
-      <value>Sample Rate</value>
+      <value>UHD</value>
     </param>
     <param>
       <key>type</key>
-      <value>real</value>
+      <value>string</value>
     </param>
     <param>
       <key>value</key>
-      <value>10e6</value>
+      <value>uhd.get_version_string()</value>
     </param>
     <param>
       <key>gui_hint</key>
-      <value>4, 0, 1, 3</value>
+      <value>3, 0, 1, 1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 226)</value>
+      <value>(384, 148)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -528,54 +816,57 @@
     </param>
   </block>
   <block>
-    <key>variable_qtgui_range</key>
+    <key>import</key>
     <param>
       <key>id</key>
-      <value>gain</value>
+      <value>import_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>label</key>
-      <value>Gain</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>50</value>
-    </param>
-    <param>
-      <key>start</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>stop</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>step</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>widget</key>
-      <value>counter_slider</value>
-    </param>
-    <param>
-      <key>orient</key>
-      <value>Qt.Horizontal</value>
-    </param>
-    <param>
-      <key>min_len</key>
-      <value>200</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value>5, 0, 1, 5</value>
+      <key>import</key>
+      <value>from gnuradio import uhd</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 304)</value>
+      <value>(310, 148)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_catch_result</key>
+    <param>
+      <key>id</key>
+      <value>z_info</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>{"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname", "rx_subdev_spec":"spec","rx_antenna":"antenna"}</value>
+    </param>
+    <param>
+      <key>block_id</key>
+      <value>usrp_dev</value>
+    </param>
+    <param>
+      <key>func</key>
+      <value>get_usrp_info</value>
+    </param>
+    <param>
+      <key>params</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(597, 566)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -610,7 +901,7 @@
     </param>
     <param>
       <key>dev_addr</key>
-      <value>dev_args_b200</value>
+      <value>dev_args</value>
     </param>
     <param>
       <key>sync</key>
@@ -1255,344 +1546,6 @@
     <param>
       <key>_coordinate</key>
       <value>(385, 21)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>import</key>
-    <param>
-      <key>id</key>
-      <value>import_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>import</key>
-      <value>from gnuradio import uhd</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(397, 468)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_label</key>
-    <param>
-      <key>id</key>
-      <value>dsp_label</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>DSP Freq</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>real</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>actual_dsp</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value>3, 4, 1, 1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(968, 148)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_label</key>
-    <param>
-      <key>id</key>
-      <value>rf_label</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>RF Freq</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>real</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>actual_rf</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value>3, 3, 1, 1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(865, 148)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_entry</key>
-    <param>
-      <key>id</key>
-      <value>center_freq</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>Center Frequency</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>real</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>900e6</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value>4, 3, 1, 2</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(502, 226)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>catch_result</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>uhd.tune_result()</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>set_center_freq</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>center_freq, myzero</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(358, 510)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_label</key>
-    <param>
-      <key>id</key>
-      <value>a_usrp</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>USRP</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>raw</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>usrp_text</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value>3, 1, 1, 1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(552, 148)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_label</key>
-    <param>
-      <key>id</key>
-      <value>a_db_label</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>Daughterboard</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>db_text</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value>3, 2, 1, 1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(697, 148)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>z_info</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>{"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname"}</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>get_usrp_info</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(600, 571)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>db_antenna</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"antenna"</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>get_antenna</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(969, 574)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_catch_result</key>
-    <param>
-      <key>id</key>
-      <value>db_spec</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"spec"</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>usrp_dev</value>
-    </param>
-    <param>
-      <key>func</key>
-      <value>get_subdev_spec</value>
-    </param>
-    <param>
-      <key>params</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(800, 574)</value>
     </param>
     <param>
       <key>_rotation</key>

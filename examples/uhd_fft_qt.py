@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: UHD FFT Qt
 # Author: Johannes Demel
-# Generated: Tue Dec 10 17:03:26 2013
+# Generated: Tue Jan  7 17:41:01 2014
 ##################################################
 
 from PyQt4 import Qt
@@ -49,18 +49,17 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.z_info = z_info = {"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname"}
-        self.usrp_type = usrp_type = "b200"
+        self.z_info = z_info = {"mboard_id":"id","mboard_serial":"serial","rx_serial":"rx","rx_subdev_name":"subname", "rx_subdev_spec":"spec","rx_antenna":"antenna"}
         self.usrp_serial = usrp_serial = z_info["mboard_serial"]
         self.usrp_id = usrp_id = z_info["mboard_id"]
-        self.master_clock_rate = master_clock_rate = 40e6
-        self.db_spec = db_spec = "spec"
+        self.db_spec = db_spec = z_info["rx_subdev_spec"]
         self.db_serial = db_serial = z_info["rx_serial"]
         self.db_name = db_name = z_info["rx_subdev_name"]
-        self.db_antenna = db_antenna = "antenna"
+        self.db_antenna = db_antenna = z_info["rx_antenna"]
         self.catch_result = catch_result = uhd.tune_result()
+        self.usrp_type = usrp_type = "x300"
         self.usrp_text = usrp_text = usrp_id + " (" + usrp_serial + ")"
-        self.dev_args = dev_args = "type=" + usrp_type + ",master_clock_rate=" + str(master_clock_rate)
+        self.master_clock_rate = master_clock_rate = 200e6
         self.db_text = db_text = db_name + " (" + db_serial  + " ," + db_spec + " ," + db_antenna + ")"
         self.actual_rf = actual_rf = catch_result.actual_rf_freq
         self.actual_dsp = actual_dsp = catch_result.actual_dsp_freq
@@ -70,7 +69,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.myzero = myzero = 0
         self.gain = gain = 50
         self.dsp_label = dsp_label = actual_dsp
-        self.dev_args_b200 = dev_args_b200 = dev_args
+        self.dev_args = dev_args = "type=" + usrp_type + ",master_clock_rate=" + str(master_clock_rate)
         self.center_freq = center_freq = 900e6
         self.a_usrp = a_usrp = usrp_text
         self.a_db_label = a_db_label = db_text
@@ -110,7 +109,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         	lambda: self.set_center_freq(eng_notation.str_to_num(self._center_freq_line_edit.text().toAscii())))
         self.top_grid_layout.addWidget(self._center_freq_tool_bar, 4, 3, 1, 2)
         self.usrp_dev = uhd.usrp_source(
-        	device_addr=dev_args_b200,
+        	device_addr=dev_args,
         	stream_args=uhd.stream_args(
         		cpu_format="fc32",
         		channels=range(1),
@@ -164,32 +163,6 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self._dsp_label_label = Qt.QLabel(str(self.dsp_label))
         self._dsp_label_tool_bar.addWidget(self._dsp_label_label)
         self.top_grid_layout.addWidget(self._dsp_label_tool_bar, 3, 4, 1, 1)
-        self.db_spec = val = self.usrp_dev.get_subdev_spec(0)
-        def _db_spec_probe():
-            notset = True
-            while notset:
-                try:
-                    self.set_db_spec(self.db_spec)
-                    notset = False
-                except:
-                    notset = True
-            time.sleep(1.0/10.0)
-        self._db_spec_thread = threading.Thread(target=_db_spec_probe)
-        self._db_spec_thread.daemon = True
-        self._db_spec_thread.start()
-        self.db_antenna = val = self.usrp_dev.get_antenna(0)
-        def _db_antenna_probe():
-            notset = True
-            while notset:
-                try:
-                    self.set_db_antenna(self.db_antenna)
-                    notset = False
-                except:
-                    notset = True
-            time.sleep(1.0/10.0)
-        self._db_antenna_thread = threading.Thread(target=_db_antenna_probe)
-        self._db_antenna_thread.daemon = True
-        self._db_antenna_thread.start()
         self.catch_result = val = self.usrp_dev.set_center_freq(center_freq, myzero)
         def _catch_result_probe():
             notset = True
@@ -231,17 +204,12 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_z_info(self, z_info):
         self.z_info = z_info
-        self.set_db_serial(self.z_info["rx_serial"])
         self.set_db_name(self.z_info["rx_subdev_name"])
+        self.set_db_antenna(self.z_info["rx_antenna"])
+        self.set_db_serial(self.z_info["rx_serial"])
+        self.set_db_spec(self.z_info["rx_subdev_spec"])
         self.set_usrp_serial(self.z_info["mboard_serial"])
         self.set_usrp_id(self.z_info["mboard_id"])
-
-    def get_usrp_type(self):
-        return self.usrp_type
-
-    def set_usrp_type(self, usrp_type):
-        self.usrp_type = usrp_type
-        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate))
 
     def get_usrp_serial(self):
         return self.usrp_serial
@@ -256,13 +224,6 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
     def set_usrp_id(self, usrp_id):
         self.usrp_id = usrp_id
         self.set_usrp_text(self.usrp_id + " (" + self.usrp_serial + ")")
-
-    def get_master_clock_rate(self):
-        return self.master_clock_rate
-
-    def set_master_clock_rate(self, master_clock_rate):
-        self.master_clock_rate = master_clock_rate
-        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate))
 
     def get_db_spec(self):
         return self.db_spec
@@ -300,6 +261,13 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.set_actual_rf(self.catch_result.actual_rf_freq)
         self.set_actual_dsp(self.catch_result.actual_dsp_freq)
 
+    def get_usrp_type(self):
+        return self.usrp_type
+
+    def set_usrp_type(self, usrp_type):
+        self.usrp_type = usrp_type
+        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate))
+
     def get_usrp_text(self):
         return self.usrp_text
 
@@ -307,12 +275,12 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.usrp_text = usrp_text
         self.set_a_usrp(self.usrp_text)
 
-    def get_dev_args(self):
-        return self.dev_args
+    def get_master_clock_rate(self):
+        return self.master_clock_rate
 
-    def set_dev_args(self, dev_args):
-        self.dev_args = dev_args
-        self.set_dev_args_b200(self.dev_args)
+    def set_master_clock_rate(self, master_clock_rate):
+        self.master_clock_rate = master_clock_rate
+        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate))
 
     def get_db_text(self):
         return self.db_text
@@ -347,8 +315,8 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
         self._samp_rate_line_edit.setText(eng_notation.num_to_str(self.samp_rate))
+        self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
         self.usrp_dev.set_samp_rate(self.samp_rate)
 
     def get_rf_label(self):
@@ -381,21 +349,21 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.dsp_label = dsp_label
         self._dsp_label_label.setText(eng_notation.num_to_str(self.dsp_label))
 
-    def get_dev_args_b200(self):
-        return self.dev_args_b200
+    def get_dev_args(self):
+        return self.dev_args
 
-    def set_dev_args_b200(self, dev_args_b200):
-        self.dev_args_b200 = dev_args_b200
+    def set_dev_args(self, dev_args):
+        self.dev_args = dev_args
 
     def get_center_freq(self):
         return self.center_freq
 
     def set_center_freq(self, center_freq):
         self.center_freq = center_freq
+        self.set_catch_result(self.usrp_dev.set_center_freq(self.center_freq, self.myzero))
+        self._center_freq_line_edit.setText(eng_notation.num_to_str(self.center_freq))
         self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
         self.usrp_dev.set_center_freq(self.center_freq, 0)
-        self._center_freq_line_edit.setText(eng_notation.num_to_str(self.center_freq))
-        self.set_catch_result(self.usrp_dev.set_center_freq(self.center_freq, self.myzero))
 
     def get_a_usrp(self):
         return self.a_usrp
