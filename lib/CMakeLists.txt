@@ -28,6 +28,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 if(ARMADILLO_FOUND)
 list(APPEND misc_sources
     music_doa_impl.cc
+    signum_xx_impl.cc
 )
 endif()
 

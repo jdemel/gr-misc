@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<block>
+  <name>Signum</name>
+  <key>misc_signum_xx</key>
+  <category>misc</category>
+  <import>import misc</import>
+  <make>misc.signum_xx($type.block_type, $vlen)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+	<param>
+		<name>IO Type</name>
+		<key>type</key>
+		<type>enum</type>
+		<option>
+			<name>Float</name>
+			<key>float</key>
+			<opt>block_type:misc.FLOAT</opt>
+		</option>
+		<option>
+			<name>Int</name>
+			<key>int</key>
+			<opt>block_type:misc.INT</opt>
+		</option>
+		<option>
+			<name>Short</name>
+			<key>short</key>
+			<opt>block_type:misc.SHORT</opt>
+		</option>
+	</param>
+
+
+  <param>
+    <name>Vec Length</name>
+    <key>vlen</key>
+	<value>1</value>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>$type</type>
+	<vlen>$vlen</vlen>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>$type</type>
+	<vlen>$vlen</vlen>
+  </source>
+</block>

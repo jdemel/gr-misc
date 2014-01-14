@@ -22,5 +22,6 @@
 ########################################################################
 install(FILES
     api.h
-    music_doa.h DESTINATION include/misc
+    music_doa.h
+    signum_xx.h DESTINATION include/misc
 )
