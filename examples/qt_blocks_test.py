@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: new Qt GUI blocks test
-# Generated: Wed Dec  4 17:42:54 2013
+# Generated: Tue Jan 14 18:47:37 2014
 ##################################################
 
 from PyQt4 import Qt

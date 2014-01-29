@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: UHD FFT Qt
 # Author: Johannes Demel
-# Generated: Mon Jan 13 12:24:00 2014
+# Generated: Tue Jan 28 11:40:10 2014
 ##################################################
 
 from PyQt4 import Qt
@@ -69,7 +69,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.myzero = myzero = 0
         self.gain = gain = 50
         self.dsp_label = dsp_label = actual_dsp
-        self.dev_args = dev_args = "type=" + usrp_type + ",master_clock_rate=" + str(master_clock_rate)
+        self.dev_args = dev_args = "type=" + usrp_type + ",master_clock_rate=" + str(master_clock_rate) + ", recv_buff_size=32768e6"
         self.center_freq = center_freq = 900e6
         self.a_usrp = a_usrp = usrp_text
         self.a_db_label = a_db_label = db_text
@@ -267,7 +267,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_usrp_type(self, usrp_type):
         self.usrp_type = usrp_type
-        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate))
+        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate) + ", recv_buff_size=32768e6")
 
     def get_usrp_text(self):
         return self.usrp_text
@@ -281,7 +281,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_master_clock_rate(self, master_clock_rate):
         self.master_clock_rate = master_clock_rate
-        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate))
+        self.set_dev_args("type=" + self.usrp_type + ",master_clock_rate=" + str(self.master_clock_rate) + ", recv_buff_size=32768e6")
 
     def get_db_text(self):
         return self.db_text
@@ -317,8 +317,8 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self._samp_rate_line_edit.setText(eng_notation.num_to_str(self.samp_rate))
-        self.usrp_dev.set_samp_rate(self.samp_rate)
         self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
+        self.usrp_dev.set_samp_rate(self.samp_rate)
 
     def get_rf_label(self):
         return self.rf_label
@@ -363,8 +363,8 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.center_freq = center_freq
         self.set_catch_result(self.usrp_dev.set_center_freq(self.center_freq, self.myzero))
         self._center_freq_line_edit.setText(eng_notation.num_to_str(self.center_freq))
-        self.usrp_dev.set_center_freq(self.center_freq, 0)
         self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
+        self.usrp_dev.set_center_freq(self.center_freq, 0)
 
     def get_a_usrp(self):
         return self.a_usrp
