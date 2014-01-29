@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: UHD FFT Qt
 # Author: Johannes Demel
-# Generated: Tue Jan 28 11:40:10 2014
+# Generated: Wed Jan 29 13:51:16 2014
 ##################################################
 
 from PyQt4 import Qt
@@ -57,7 +57,7 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
         self.db_name = db_name = z_info["rx_subdev_name"]
         self.db_antenna = db_antenna = z_info["rx_antenna"]
         self.catch_result = catch_result = uhd.tune_result()
-        self.usrp_type = usrp_type = "b200"
+        self.usrp_type = usrp_type = "usrp2"
         self.usrp_text = usrp_text = usrp_id + " (" + usrp_serial + ")"
         self.master_clock_rate = master_clock_rate = 40e6
         self.db_text = db_text = db_name + " (" + db_serial  + " ," + db_spec + " ," + db_antenna + ")"
@@ -205,12 +205,12 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_z_info(self, z_info):
         self.z_info = z_info
-        self.set_usrp_id(self.z_info["mboard_id"])
-        self.set_usrp_serial(self.z_info["mboard_serial"])
-        self.set_db_spec(self.z_info["rx_subdev_spec"])
-        self.set_db_serial(self.z_info["rx_serial"])
-        self.set_db_antenna(self.z_info["rx_antenna"])
         self.set_db_name(self.z_info["rx_subdev_name"])
+        self.set_db_antenna(self.z_info["rx_antenna"])
+        self.set_db_serial(self.z_info["rx_serial"])
+        self.set_db_spec(self.z_info["rx_subdev_spec"])
+        self.set_usrp_serial(self.z_info["mboard_serial"])
+        self.set_usrp_id(self.z_info["mboard_id"])
 
     def get_usrp_serial(self):
         return self.usrp_serial
@@ -259,8 +259,8 @@ class uhd_fft_qt(gr.top_block, Qt.QWidget):
 
     def set_catch_result(self, catch_result):
         self.catch_result = catch_result
-        self.set_actual_dsp(self.catch_result.actual_dsp_freq)
         self.set_actual_rf(self.catch_result.actual_rf_freq)
+        self.set_actual_dsp(self.catch_result.actual_dsp_freq)
 
     def get_usrp_type(self):
         return self.usrp_type
